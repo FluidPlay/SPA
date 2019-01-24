@@ -1,0 +1,64 @@
+-- auto-generated definition
+CREATE TABLE TableValues
+(
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
+  Type     VARCHAR(150) NULL,
+  Value     VARCHAR(150) NULL
+);
+CREATE TABLE Smurfs
+(
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
+  SpringID     VARCHAR(150) NULL,
+  UserID     VARCHAR(150) NULL,
+  CountryID     VARCHAR(150) NULL,
+  CPUID     VARCHAR(150) NULL,
+  ColorHEX     VARCHAR(6) NULL,
+  FirstSeen          INT(11) NULL,
+  LastSeen          INT(11) NULL
+);
+
+
+CREATE TABLE SmurfIPs
+(
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
+  SmurfID     BIGINT NOT NULL,
+  IPID     VARCHAR(150) NULL,
+  FirstSeen          INT(11) NULL,
+  LastSeen          INT(11) NULL,
+  CONSTRAINT fk_smurf_ip_smurf_id_smurf
+  FOREIGN KEY (SmurfID) REFERENCES Smurfs (ID)
+);
+
+-- CREATE INDEX ix_smurf_ip_smurf_id
+--   ON SmurfIPs (SmurfID);
+
+CREATE TABLE Presets
+(
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
+  GroupID     VARCHAR(150) NULL,
+  Preset     VARCHAR(150) NULL,
+  Config     VARCHAR(150) NULL
+);
+
+CREATE TABLE Groups
+(
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
+  GroupName     VARCHAR(150) NULL
+);
+
+CREATE TABLE Maps
+(
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
+  MapName     VARCHAR(150) NULL
+);
+
+
+CREATE TABLE MapSettings
+(
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
+  MapID     VARCHAR(150) NULL,
+  GroupID     VARCHAR(150) NULL,
+  Teams     VARCHAR(150) NULL,
+  StartPosType     VARCHAR(150) NULL,
+  Boxes     VARCHAR(150) NULL
+);

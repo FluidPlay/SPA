@@ -1,0 +1,9 @@
+# The following format params are available:
+# {player_name}         Name of the player being connected.
+# {server_name}         The name of the battle room.
+# {uptime_verbose}      The battle uptime in verbose format (e.g. 6 minutes and 30 seconds).
+# {uptime_formatted}    The battle uptime in hh:mm:ss format (e.g. 01:06:30).
+
+* Hi {player_name}. Welcome to the {server_name} Server.
+* Server is running for {uptime_verbose}.
+* Mod download is available at: http://morts.co/mods/{mod_archive}

@@ -1,0 +1,71 @@
+-- auto-generated definition
+CREATE TABLE IF NOT EXISTS TableValues
+(
+  ID BIGINT AUTO_INCREMENT
+    PRIMARY KEY,
+  Type     VARCHAR(150) NULL,
+  Value     VARCHAR(150) NULL
+);
+CREATE TABLE IF NOT EXISTS Smurfs
+(
+  ID BIGINT AUTO_INCREMENT
+    PRIMARY KEY,
+  SpringID     VARCHAR(150) NULL,
+  UserID     VARCHAR(150) NULL,
+  CountryID     VARCHAR(150) NULL,
+  CPUID     VARCHAR(150) NULL,
+  ColorHEX     VARCHAR(6) NULL,
+  FirstSeen          INT(11) NULL,
+  LastSeen          INT(11) NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS SmurfIPs
+(
+  ID BIGINT AUTO_INCREMENT
+    PRIMARY KEY,
+  SmurfID     BIGINT NOT NULL,
+  IPID     VARCHAR(150) NULL,
+  FirstSeen          INT(11) NULL,
+  LastSeen          INT(11) NULL,
+  CONSTRAINT fk_smurf_ip_smurf_id_smurf
+  FOREIGN KEY (SmurfID) REFERENCES Smurfs (ID)
+);
+
+CREATE INDEX IF NOT EXISTS ix_smurf_ip_smurf_id
+  ON SmurfIPs (SmurfID);
+
+CREATE TABLE IF NOT EXISTS Presets
+(
+  ID BIGINT AUTO_INCREMENT
+    PRIMARY KEY,
+  GroupID     VARCHAR(150) NULL,
+  Preset     VARCHAR(150) NULL,
+  Config     VARCHAR(150) NULL
+);
+
+CREATE TABLE IF NOT EXISTS Groups
+(
+  ID BIGINT AUTO_INCREMENT
+    PRIMARY KEY,
+  GroupName     VARCHAR(150) NULL
+);
+
+CREATE TABLE IF NOT EXISTS Maps
+(
+  ID BIGINT AUTO_INCREMENT
+    PRIMARY KEY,
+  MapName     VARCHAR(150) NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS MapSettings
+(
+  ID BIGINT AUTO_INCREMENT
+    PRIMARY KEY,
+  MapID     VARCHAR(150) NULL,
+  GroupID     VARCHAR(150) NULL,
+  Teams     VARCHAR(150) NULL,
+  StartPosType     VARCHAR(150) NULL,
+  Boxes     VARCHAR(150) NULL
+);
